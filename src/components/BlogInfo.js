@@ -1,15 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const BlogInfo = ({ blog }) => {
+const BlogInfo = ({ blogs }) => {
   return (
     <div>
-      <h1>{blog.title}</h1>
-      <p>{blog.content}</p>
-      <div>
-        <div>{blog.comments.length} Comments</div>
-        <div>{blog.likes} likes</div>
-        <div>{blog.dislikes} dislikes</div>
-      </div>
+      {blogs.map(blog => (
+        <div key={blog._id}>
+          <Link to={`/blogs/${blog._id}`}>{blog.title}</Link>
+        </div>
+      ))}
     </div>
   )
 }
