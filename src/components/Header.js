@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   const headerStyle = {
@@ -29,14 +22,10 @@ const Header = () => {
       <Link style={linkStyle} to="/">
         JH Blog
       </Link>
-      <span> | </span>
+      <span style={linkStyle}> | </span>
       <Link style={linkStyle} to="/blogs">
         Blogs
       </Link>
-
-      <Switch>
-        <Route>{}</Route>
-      </Switch>
     </header>
   )
 }
