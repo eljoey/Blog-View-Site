@@ -17,7 +17,6 @@ const Blog = props => {
     if (!curBlog.comments || curBlog.comments.length === 0) {
       return <div>No Comments</div>
     } else {
-      console.log('blog', curBlog.comments)
       return (
         <>
           <h4>Comments</h4>
@@ -31,9 +30,13 @@ const Blog = props => {
     }
   }
 
+  // styles
+  const paddingStyle = 'px-10 py-10'
+  const titleStyle = 'text-3xl font-bold text-center'
+
   return (
-    <div>
-      <h3>{curBlog.title}</h3>
+    <div className={paddingStyle}>
+      <div className={titleStyle}>{curBlog.title}</div>
       <div>{curBlog.content}</div>
       <div>
         <span>{curBlog.likes} likes </span>

@@ -3,7 +3,9 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-      <h3>Welcome to blogsite of blog</h3>
+      <div className="px-5 py-5 text-center text-3xl font-bold">
+        Welcome to blogsite of blog
+      </div>
     </div>
   )
 }

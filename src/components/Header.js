@@ -2,28 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-  const headerStyle = {
-    height: '6vh',
-    backgroundColor: 'black',
-    width: '100%',
-    color: 'white',
-    display: 'flex',
-    justifyContent: 'left',
-    alignContent: 'center'
-  }
-
-  const linkStyle = {
-    paddingRight: 5,
-    color: 'white'
-  }
+  const linkStyle = 'text-white px-2'
+  const hoverStyle = 'hover:underline hover:text-blue-600'
 
   return (
-    <header style={headerStyle}>
-      <Link style={linkStyle} to="/">
-        JH Blog
+    <header className="h-10 flex items-center bg-black text-lg">
+      <Link className={`${linkStyle} ${hoverStyle}`} to="/">
+        Home
       </Link>
-      <span style={linkStyle}> | </span>
-      <Link style={linkStyle} to="/blogs">
+      <span className={linkStyle}> | </span>
+      <Link className={`${linkStyle} ${hoverStyle}`} to="/blogs">
         Blogs
       </Link>
     </header>

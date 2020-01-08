@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './App.css'
 import axios from 'axios'
 import Header from './components/Header'
 import Main from './components/Main'
@@ -17,7 +16,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className="bg-gray-500 h-screen font-mono">
       <Header />
       <Main blogs={blogs} />
     </div>
