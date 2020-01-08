@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import CommentForm from './CommentForm'
 
 const Blog = props => {
   const [curBlog, setCurBlog] = useState({})
@@ -43,6 +44,7 @@ const Blog = props => {
         <span>{curBlog.dislikes} dislikes </span>
       </div>
       <div>{renderComments()}</div>
+      <CommentForm blogId={curBlog._id} />
     </div>
   )
 }
