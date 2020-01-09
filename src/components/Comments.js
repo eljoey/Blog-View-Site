@@ -17,7 +17,7 @@ const Comments = ({ comments }) => {
             >
               <div>{comment.text}</div>
               <div className="text-xs">
-                {comment.name} - {date}
+                -{comment.name} - {date}
               </div>
             </div>
           )
