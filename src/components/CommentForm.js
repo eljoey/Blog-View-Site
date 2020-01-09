@@ -2,11 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import { createBrowserHistory } from 'history'
 
-const CommentForm = ({ blogId, setCurBlog, curBlog }) => {
+const CommentForm = ({ blogId }) => {
   const history = createBrowserHistory()
 
   // Styles
-  const containerStyle = 'bg-gray-300 shadow-md rounded mt-5 p-2 max-w-lg'
+  const containerStyle =
+    'container bg-gray-300 shadow-md rounded mx-auto p-2 mt-5 '
   const nameStyle = 'px-1 placeholder-gray-900 shadow-md rounded'
   const textStyle = 'h-full w-full placeholder-gray-900'
   const buttonStyle =
@@ -17,12 +18,14 @@ const CommentForm = ({ blogId, setCurBlog, curBlog }) => {
     const newComment = {
       blogId: blogId,
       name: e.target.name.value,
-      text: e.target.comment.value
+      text: e.target.comment.value,
+      timestamp: Date.now()
     }
     await axios.post(
       'http://localhost:3000/api/blogs/comment/create',
       newComment
     )
+
     // Reload page
     history.go(0)
   }

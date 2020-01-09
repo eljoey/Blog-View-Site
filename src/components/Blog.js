@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CommentForm from './CommentForm'
+import Comments from './Comments'
 
 const Blog = props => {
   const [curBlog, setCurBlog] = useState({})
@@ -18,16 +19,7 @@ const Blog = props => {
     if (!curBlog.comments || curBlog.comments.length === 0) {
       return <div>No Comments</div>
     } else {
-      return (
-        <>
-          <h4>Comments</h4>
-          <div>
-            {curBlog.comments.map(comment => {
-              return <div key={comment._id}>{comment.text}</div>
-            })}
-          </div>
-        </>
-      )
+      return <Comments comments={curBlog.comments} />
     }
   }
 
@@ -44,11 +36,7 @@ const Blog = props => {
         <span>{curBlog.dislikes} dislikes </span>
       </div>
       <div>{renderComments()}</div>
-      <CommentForm
-        blogId={curBlog._id}
-        setCurBlog={setCurBlog}
-        curBlog={curBlog}
-      />
+      <CommentForm blogId={curBlog._id} />
     </div>
   )
 }
