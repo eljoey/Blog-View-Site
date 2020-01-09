@@ -44,7 +44,11 @@ const Blog = props => {
         <span>{curBlog.dislikes} dislikes </span>
       </div>
       <div>{renderComments()}</div>
-      <CommentForm blogId={curBlog._id} />
+      <CommentForm
+        blogId={curBlog._id}
+        setCurBlog={setCurBlog}
+        curBlog={curBlog}
+      />
     </div>
   )
 }

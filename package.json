@@ -17,7 +17,8 @@
     "start": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prebuild": "Node_ENV=production npm run build:styles"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.3.0",
     "autoprefixer": "^9.7.3",
     "postcss-cli": "^7.0.0",
     "tailwindcss": "^1.1.4"
