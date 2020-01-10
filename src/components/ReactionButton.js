@@ -4,7 +4,6 @@ import useLocalStorage from 'react-use-localstorage'
 
 const ReactionButton = ({ action, blog, setCurBlog }) => {
   const [pressed, setPressed] = useLocalStorage(`${blog._id}-${action}Clicked`)
-  console.log(pressed)
 
   // Sets the correct icon for the action
   const icon = action === 'likes' ? 'fas fa-heart' : 'fas fa-heart-broken'
@@ -57,8 +56,6 @@ const ReactionButton = ({ action, blog, setCurBlog }) => {
 
   const handleClick = e => {
     e.preventDefault()
-    console.log(pressed, action)
-
     updateReaction(blog, action, pressed)
   }
 
