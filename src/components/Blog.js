@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CommentForm from './CommentForm'
 import Comments from './Comments'
+import ReactionButton from './ReactionButton'
 
 const Blog = props => {
   const [curBlog, setCurBlog] = useState({})
@@ -31,9 +32,17 @@ const Blog = props => {
     <div className={paddingStyle}>
       <div className={titleStyle}>{curBlog.title}</div>
       <div>{curBlog.content}</div>
-      <div>
-        <span>{curBlog.likes} likes </span>
-        <span>{curBlog.dislikes} dislikes </span>
+      <div className="flex">
+        <ReactionButton
+          action={'likes'}
+          blog={curBlog}
+          setCurBlog={setCurBlog}
+        />
+        <ReactionButton
+          action={'dislikes'}
+          blog={curBlog}
+          setCurBlog={setCurBlog}
+        />
       </div>
       <div>{renderComments()}</div>
       <CommentForm blogId={curBlog._id} />
