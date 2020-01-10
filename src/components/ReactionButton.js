@@ -1,50 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+import useLocalStorage from 'react-use-localstorage'
 
 const ReactionButton = ({ action, blog, setCurBlog }) => {
-  const [pressed, setPressed] = useState(
-    localStorage.getItem(`${blog._id}.${action}Clicked`)
-  )
-  const [style, setStyle] = useState({
-    color: 'black'
-  })
+  const [pressed, setPressed] = useLocalStorage(`${blog._id}-${action}Clicked`)
+  console.log(pressed)
 
   // Sets the correct icon for the action
   const icon = action === 'likes' ? 'fas fa-heart' : 'fas fa-heart-broken'
   let reactionAmmount = action === 'likes' ? blog.likes : blog.dislikes
 
-  // Sets color of reaction if pressed is true
-  // const handleStyle = () => {
-  //   if (pressed === 'false') {
-  //     return {
-  //       color: 'black'
-  //     }
-  //   } else if (action === 'likes') {
-  //     return {
-  //       color: 'darkblue'
-  //     }
-  //   } else if (action === 'dislikes') {
-  //     return {
-  //       color: 'darkred'
-  //     }
-  //   }
-  // }
+  // Handling of Color for reaction based on if its pressed
+  let reactionStyle = {}
 
-  useEffect(() => {
-    if (pressed === 'false' || pressed === null) {
-      setStyle({
-        color: 'black'
-      })
-    } else if (action === 'likes') {
-      setStyle({
-        color: 'darkblue'
-      })
-    } else if (action === 'dislikes') {
-      setStyle({
-        color: 'darkred'
-      })
+  if (pressed === 'false' || pressed === '') {
+    reactionStyle = {
+      color: 'black'
     }
-  }, [pressed, action])
+  } else if (action === 'likes') {
+    reactionStyle = {
+      color: 'darkblue'
+    }
+  } else if (action === 'dislikes') {
+    reactionStyle = {
+      color: 'darkred'
+    }
+  }
+
+  // (action === 'likes' && pressed === 'true') ? reactionStyle = likesPressed : reactionStyle = unpressedStyle
 
   const updateReaction = async (blogInfo, reaction, isPressed) => {
     const updatedBlog = {
@@ -53,7 +36,7 @@ const ReactionButton = ({ action, blog, setCurBlog }) => {
 
     // Updates localstorage when toggling like/dislike button
     const setStorage = (object, boolean) => {
-      localStorage.setItem(`${blog._id}.${action}Clicked`, boolean)
+      localStorage.setItem(`${blog._id}-${action}Clicked`, boolean)
       setPressed(boolean)
       setCurBlog(object)
     }
@@ -74,12 +57,18 @@ const ReactionButton = ({ action, blog, setCurBlog }) => {
 
   const handleClick = e => {
     e.preventDefault()
+    console.log(pressed, action)
+
     updateReaction(blog, action, pressed)
   }
 
   return (
     <>
-      <button style={style} className={'mr-3 ' + icon} onClick={handleClick}>
+      <button
+        style={reactionStyle}
+        className={'mr-3 ' + icon}
+        onClick={handleClick}
+      >
         {reactionAmmount}
       </button>
     </>
