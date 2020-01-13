@@ -9,7 +9,7 @@ const CommentForm = ({ blogId }) => {
   const containerStyle =
     'container bg-gray-300 shadow-md rounded mx-auto p-2 mt-5 '
   const nameStyle = 'px-1 placeholder-gray-900 shadow-md rounded'
-  const textStyle = 'h-full w-full placeholder-gray-900'
+  const textStyle = 'h-full w-full placeholder-gray-900 pl-1'
   const buttonStyle =
     'bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded'
 

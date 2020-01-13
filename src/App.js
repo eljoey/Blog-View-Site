@@ -16,7 +16,7 @@ function App() {
   }, [])
 
   return (
-    <div className="bg-gray-500 h-screen font-mono">
+    <div className=" font-mono">
       <Header />
       <Main blogs={blogs} />
     </div>

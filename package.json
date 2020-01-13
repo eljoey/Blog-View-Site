@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prebuild": "Node_ENV=production npm run build:styles"
+    "prebuild": "Node_ENV=production npm run build:style"
   },
   "eslintConfig": {
     "extends": "react-app"

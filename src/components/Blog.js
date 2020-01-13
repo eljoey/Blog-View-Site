@@ -31,8 +31,8 @@ const Blog = props => {
   return (
     <div className={paddingStyle}>
       <div className={titleStyle}>{curBlog.title}</div>
-      <div>{curBlog.content}</div>
-      <div className="flex">
+      <div className="mx-auto max-w-6xl">{curBlog.content}</div>
+      <div className="text-center">
         <ReactionButton
           action={'likes'}
           blog={curBlog}

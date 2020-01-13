@@ -7,7 +7,7 @@ const Main = ({ blogs }) => {
   return (
     <main>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" render={() => <Home blogs={blogs} />} />
         <Route path="/blogs" render={() => <Blogs blogs={blogs} />} />
       </Switch>
     </main>

@@ -28,7 +28,9 @@ const ReactionButton = ({ action, blog, setCurBlog }) => {
 
   // (action === 'likes' && pressed === 'true') ? reactionStyle = likesPressed : reactionStyle = unpressedStyle
 
-  const updateReaction = async (blogInfo, reaction, isPressed) => {
+  const updateReaction = async (blogInfo, reaction, isPressed, e) => {
+    e.preventDefault()
+
     const updatedBlog = {
       ...blogInfo
     }
@@ -54,17 +56,12 @@ const ReactionButton = ({ action, blog, setCurBlog }) => {
     )
   }
 
-  const handleClick = e => {
-    e.preventDefault()
-    updateReaction(blog, action, pressed)
-  }
-
   return (
     <>
       <button
         style={reactionStyle}
         className={'mr-3 ' + icon}
-        onClick={handleClick}
+        onClick={e => updateReaction(blog, action, pressed, e)}
       >
         {reactionAmmount}
       </button>
