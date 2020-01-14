@@ -10,7 +10,9 @@ const Blog = props => {
 
   useEffect(() => {
     const fetchCurBlog = async () => {
-      const res = await axios.get(`http://localhost:3000/api/blogs/${blogId}`)
+      const res = await axios.get(
+        `https://jh-blog-api.herokuapp.com/api/blogs/${blogId}`
+      )
       setCurBlog(res.data)
     }
     fetchCurBlog()

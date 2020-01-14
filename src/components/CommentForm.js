@@ -22,7 +22,7 @@ const CommentForm = ({ blogId }) => {
       timestamp: Date.now()
     }
     await axios.post(
-      'http://localhost:3000/api/blogs/comment/create',
+      'https://jh-blog-api.herokuapp.com/api/blogs/comment/create',
       newComment
     )
 

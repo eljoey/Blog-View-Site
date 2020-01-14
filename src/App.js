@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await axios.get('http://localhost:3000/api/blogs')
+      const res = await axios.get('https://jh-blog-api.herokuapp.com/api/blogs')
       setBlogs(res.data.blogs)
     }
 

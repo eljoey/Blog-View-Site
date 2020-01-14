@@ -51,7 +51,7 @@ const ReactionButton = ({ action, blog, setCurBlog }) => {
     }
 
     await axios.put(
-      `http://localhost:3000/api/blogs/reaction/update/${blog._id}`,
+      `https://jh-blog-api.herokuapp.com/api/blogs/reaction/update/${blog._id}`,
       updatedBlog
     )
   }
