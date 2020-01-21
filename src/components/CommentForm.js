@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { createBrowserHistory } from 'history'
 
-const CommentForm = (props) => {
+const CommentForm = ({ blogId }) => {
   const history = createBrowserHistory()
 
   // Styles
@@ -16,7 +16,7 @@ const CommentForm = (props) => {
   const addComment = async e => {
     e.preventDefault()
     const newComment = {
-      blogId: props.blogId,
+      blogId: blogId,
       name: e.target.name.value,
       text: e.target.comment.value,
       timestamp: Date.now()
@@ -27,7 +27,7 @@ const CommentForm = (props) => {
     )
 
     // Reload page
-    props.history.go(0)
+    history.go(0)
   }
 
   return (
