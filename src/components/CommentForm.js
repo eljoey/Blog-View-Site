@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { createBrowserHistory } from 'history'
+import { withRouter } from 'react-router-dom'
 
 const CommentForm = ({ blogId }) => {
   const history = createBrowserHistory()
@@ -67,4 +68,4 @@ const CommentForm = ({ blogId }) => {
   )
 }
 
-export default CommentForm
+export default withRouter(CommentForm)
