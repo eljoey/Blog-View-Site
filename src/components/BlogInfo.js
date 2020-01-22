@@ -9,7 +9,7 @@ const BlogInfo = ({ blogs }) => {
   return (
     <div className={padding}>
       <div className={recentBlogTitle}>Recent Blogs</div>
-      {blogs.map(blog => (
+      {blogs.reverse().map(blog => (
         <div key={blog._id}>
           <span>- </span>
           <Link className={blogLinks} to={`/blogs/${blog._id}`}>
