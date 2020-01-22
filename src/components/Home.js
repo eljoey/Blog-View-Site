@@ -13,7 +13,9 @@ const Home = ({ blogs }) => {
           <h5>Newest Blog:</h5>
           <div className={blogLinks}>
             <span>- </span>
-            <Link to={`/blogs/${blogs[0]._id}`}>{blogs[0].title}</Link>
+            <Link to={`/blogs/${blogs[blogs.length - 1]._id}`}>
+              {blogs[blogs.length - 1].title}
+            </Link>
           </div>
         </>
       )
