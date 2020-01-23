@@ -9,6 +9,11 @@ function App() {
   useEffect(() => {
     const fetchBlogs = async () => {
       const res = await axios.get('https://jh-blog-api.herokuapp.com/api/blogs')
+
+      // sort by newest post first
+      res.data.blogs.sort(
+        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+      )
       setBlogs(res.data.blogs)
     }
 
