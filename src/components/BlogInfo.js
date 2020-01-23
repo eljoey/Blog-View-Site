@@ -6,7 +6,6 @@ const BlogInfo = ({ blogs }) => {
   const padding = 'px-10 py-10'
   const recentBlogTitle = 'text-xl font-bold underline'
   const blogLinks = 'hover:underline hover:text-gray-800'
-  console.log(blogs)
 
   return (
     <div className={padding}>
