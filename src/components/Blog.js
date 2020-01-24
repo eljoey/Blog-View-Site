@@ -26,6 +26,10 @@ const Blog = props => {
     }
   }
 
+  const createMarkup = () => {
+    return { __html: curBlog.content }
+  }
+
   // styles
   const paddingStyle = 'px-10 py-10'
   const titleStyle = 'text-3xl font-bold text-center'
@@ -33,7 +37,10 @@ const Blog = props => {
   return (
     <div className={paddingStyle}>
       <div className={titleStyle}>{curBlog.title}</div>
-      <div className="mx-auto max-w-6xl">{curBlog.content}</div>
+      <div
+        className="mx-auto max-w-6xl"
+        dangerouslySetInnerHTML={createMarkup()}
+      />
       <div className="text-center">
         <ReactionButton
           action={'likes'}
