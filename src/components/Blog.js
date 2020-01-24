@@ -38,7 +38,7 @@ const Blog = props => {
     <div className={paddingStyle}>
       <div className={titleStyle}>{curBlog.title}</div>
       <div
-        className="mx-auto max-w-6xl"
+        className="mx-auto max-w-6xl py-10"
         dangerouslySetInnerHTML={createMarkup()}
       />
       <div className="text-center">
