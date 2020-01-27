@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import CommentForm from './CommentForm'
 import Comments from './Comments'
 import ReactionButton from './ReactionButton'
+import blogService from '../services/blogs'
 
 const Blog = props => {
   const [curBlog, setCurBlog] = useState({})
@@ -10,10 +10,8 @@ const Blog = props => {
 
   useEffect(() => {
     const fetchCurBlog = async () => {
-      const res = await axios.get(
-        `https://jh-blog-api.herokuapp.com/api/blogs/${blogId}`
-      )
-      setCurBlog(res.data)
+      const res = await blogService.getBlogById(blogId)
+      setCurBlog(res)
     }
     fetchCurBlog()
   }, [blogId])

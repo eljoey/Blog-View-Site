@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import Header from './components/Header'
 import Main from './components/Main'
+import blogService from './services/blogs'
+import Loading from './components/Loading'
 
 function App() {
   const [blogs, setBlogs] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await axios.get('https://jh-blog-api.herokuapp.com/api/blogs')
+      const res = await blogService.getBlogs()
 
-      // sort by newest post first
-      res.data.blogs.sort(
-        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
-      )
-      setBlogs(res.data.blogs)
+      setBlogs(res)
+
+      setLoading(false)
     }
 
     fetchBlogs()
   }, [])
 
-  return (
-    <div className=" font-mono">
-      <Header />
-      <Main blogs={blogs} />
-    </div>
-  )
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <Loading />
+      </>
+    )
+  } else {
+    return (
+      <div className=" font-mono">
+        <Header />
+        <Main blogs={blogs} />
+      </div>
+    )
+  }
 }
 
 export default App

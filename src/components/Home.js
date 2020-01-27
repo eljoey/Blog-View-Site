@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 const Home = ({ blogs }) => {
   const blogLinks = 'hover:underline hover:text-gray-800 pl-3'
@@ -13,7 +14,9 @@ const Home = ({ blogs }) => {
           <h5>Newest Blog:</h5>
           <div className={blogLinks}>
             <span>- </span>
-            <Link to={`/blogs/${blogs[0]._id}`}>{blogs[0].title}</Link>
+            <Link to={`/blogs/${blogs[0]._id}`}>
+              {blogs[0].title} - {moment(blogs[0].timestamp).fromNow()}
+            </Link>
           </div>
         </>
       )

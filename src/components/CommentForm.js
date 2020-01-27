@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import { createBrowserHistory } from 'history'
 import { withRouter } from 'react-router-dom'
+import blogService from '../services/blogs'
 
 const CommentForm = ({ blogId }) => {
   const history = createBrowserHistory()
@@ -22,10 +22,7 @@ const CommentForm = ({ blogId }) => {
       text: e.target.comment.value,
       timestamp: Date.now()
     }
-    await axios.post(
-      'https://jh-blog-api.herokuapp.com/api/blogs/comment/create',
-      newComment
-    )
+    await blogService.postComment(newComment)
 
     // Reload page
     history.go(0)
